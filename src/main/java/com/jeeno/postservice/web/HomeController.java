@@ -1,5 +1,6 @@
 package com.jeeno.postservice.web;
 
+import com.jeeno.postservice.web.config.auth.LoginUser;
 import com.jeeno.postservice.web.dto.SessionUser;
 import com.jeeno.postservice.web.service.PostsService;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +15,10 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
 
     private final PostsService postsService;
-    private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String home(Model model){
+    public String home(Model model, @LoginUser SessionUser user){
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         if( user != null ){
             model.addAttribute("userName", user.getName());
         }
