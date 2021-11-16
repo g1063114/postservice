@@ -3,3 +3,7 @@ spring:
     include: oauth, real-db
   session:
     store-type: jdbc
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLInnoDBDialect
