@@ -1,5 +1,8 @@
 spring:
   profiles:
+    group:
+      local-real: local-real, oauth
+      real: real, real-db, oauth
     include: oauth
   datasource:
     url:  jdbc:h2:tcp://localhost/~/postservice
