@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                 .authorizeRequests()  // URL별 권환 관리 설정 시작
-                .antMatchers("/","/css/**","/images/**","/js/**","/h2-console/**").permitAll() // 전체 열람 권환
+                .antMatchers("/","/css/**","/images/**","/js/**","/h2-console/**","/profile").permitAll() // 전체 열람 권환
                 .antMatchers("/posts/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated()   // 인증된 사용자에게 허용
                 .and()
