@@ -18,17 +18,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .headers().frameOptions().disable()
                 .and()
-                .authorizeRequests()  // URL별 권환 관리 설정 시작
-                .antMatchers("/","/css/**","/images/**","/js/**","/h2-console/**","/profile").permitAll() // 전체 열람 권환
-                .antMatchers("/posts/**").hasRole(Role.USER.name())
-                .anyRequest().authenticated()   // 인증된 사용자에게 허용
+                    .authorizeRequests()  // URL별 권환 관리 설정 시작
+                    .antMatchers("/","/css/**","/images/**","/js/**","/h2-console/**","/profile")
+                        .permitAll() // 전체 열람 권환
+                    .antMatchers("/posts/**").hasRole(Role.USER.name())
+                    .anyRequest().authenticated()   // 인증된 사용자에게 허용
                 .and()
-                .logout()
-                .logoutSuccessUrl("/")  // 로그아웃 성공시 / 로 이동
+                    .logout()
+                        .logoutSuccessUrl("/")  // 로그아웃 성공시 / 로 이동
                 .and()
-                .oauth2Login()
-                .userInfoEndpoint()
-                .userService(customOAuth2UserService);
+                    .oauth2Login()
+                        .userInfoEndpoint()
+                            .userService(customOAuth2UserService);
 
     }
 }
