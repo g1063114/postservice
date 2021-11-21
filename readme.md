@@ -1,1 +1,1 @@
-utterances 알아보기
+utterances 알아보기...ing
